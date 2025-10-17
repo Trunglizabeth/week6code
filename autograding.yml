@@ -1,0 +1,26 @@
+name: Autograding
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up C++
+        run: sudo apt-get install -y g++
+
+      - name: Compile
+        run: g++ -std=c++17 -O2 -Wall main.cpp -o main
+
+      - name: Run Test 1
+        run: |
+          ./main < tests/input1.txt > output1.txt
+          diff -w output1.txt tests/output1.txt
+
+      - name: Run Test 2
+        run: |
+          ./main < tests/input2.txt > output2.txt
+          diff -w output2.txt tests/output2.txt
