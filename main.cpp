@@ -1,69 +1,59 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
-// Câu 1: Tính tổng các phần tử của ma trận
-int sumMatrix(const vector<vector<int>>& mat) {
-    int sum = 0;
-    for (auto& row : mat)
-        for (int val : row)
-            sum += val;
-    return sum;
+// Task 1: Sum of all elements in a matrix
+int sumMatrix(int a[][100], int n, int m) {
+    // TODO: Write your code here
+    return 0;
 }
 
-// Câu 2: Tính tổng từng hàng
-vector<int> sumRows(const vector<vector<int>>& mat) {
-    vector<int> result;
-    for (auto& row : mat) {
-        int s = 0;
-        for (int val : row) s += val;
-        result.push_back(s);
-    }
-    return result;
+// Task 2: Sum of each row
+void sumRows(int a[][100], int n, int m, int b[]) {
+    // TODO: Write your code here
 }
 
-// Câu 3: Sắp xếp mảng 1D bằng Bubble Sort
-void bubbleSort(vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 0; i < n - 1; ++i)
-        for (int j = 0; j < n - i - 1; ++j)
-            if (arr[j] > arr[j + 1])
-                swap(arr[j], arr[j + 1]);
+// Task 3: Bubble sort for 1D array
+void bubbleSort(int arr[], int n) {
+    // TODO: Write your code here
 }
 
-// Câu 4: Tìm phần tử nhỏ nhất trong ma trận
-int minMatrix(const vector<vector<int>>& mat) {
-    int mn = mat[0][0];
-    for (auto& row : mat)
-        for (int val : row)
-            mn = min(mn, val);
-    return mn;
+// Task 4: Find the smallest element in the matrix
+int minMatrix(int a[][100], int n, int m) {
+    // TODO: Write your code here
+    return 0;
 }
 
 int main() {
     int n, m;
     cin >> n >> m;
-    vector<vector<int>> mat(n, vector<int>(m));
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < m; ++j)
-            cin >> mat[i][j];
+    int a[100][100];
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            cin >> a[i][j];
 
-    cout << sumMatrix(mat) << endl;
+    // Task 1
+    cout << sumMatrix(a, n, m) << endl;
 
-    vector<int> rowSums = sumRows(mat);
-    for (int x : rowSums) cout << x << " ";
+    // Task 2
+    int rowSum[100];
+    sumRows(a, n, m, rowSum);
+    for (int i = 0; i < n; i++)
+        cout << rowSum[i] << " ";
     cout << endl;
 
-    vector<int> all;
-    for (auto& row : mat)
-        for (int x : row)
-            all.push_back(x);
-    bubbleSort(all);
-    for (int x : all) cout << x << " ";
+    // Task 3
+    int arr[10000], k = 0;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            arr[k++] = a[i][j];
+
+    bubbleSort(arr, k);
+    for (int i = 0; i < k; i++)
+        cout << arr[i] << " ";
     cout << endl;
 
-    cout << minMatrix(mat) << endl;
+    // Task 4
+    cout << minMatrix(a, n, m) << endl;
 
     return 0;
 }
